@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>TEMBAK A-YAM</title>
+        <link rel = "icon" href = "images/sukukata.png" type = "image/x-icon">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<script type="text/javascript" src="js/Base.js"></script>
+		<script type="text/javascript" src="js/LayerManager.js"></script>
+		<script type="text/javascript" src="js/Game.js"></script>
+		<script type="text/javascript" src="js/Rectangle.js"></script>
+		<script type="text/javascript" src="js/BipMap.js"></script>
+		<script type="text/javascript" src="js/Text.js"></script>
+		<script type="text/javascript" src="js/MainScreen.js"></script>
+		<script type="text/javascript" src="js/MainScreenTitle.js"></script>
+		<script type="text/javascript" src="js/SwampScreen.js"></script>
+		<script type="text/javascript" src="js/Hud.js"></script>
+		<script type="text/javascript" src="js/HudBackground.js"></script>
+		<script type="text/javascript" src="js/Modal.js"></script>
+		<script type="text/javascript" src="js/ModalBackground.js"></script>
+		<script type="text/javascript" src="js/LevelBackground.js"></script>
+		<script type="text/javascript" src="js/LevelForeground.js"></script>
+		<script type="text/javascript" src="js/Dog.js"></script>
+		<script type="text/javascript" src="js/Duck.js"></script>
+		<script type="text/javascript" src="js/Flash.js"></script>
+		<script type="text/javascript" src="js/Score.js"></script>
+		<script type="text/javascript" src="js/Sound.js"></script>
+
+		<script type="text/javascript">
+			document.addEventListener('DOMContentLoaded', function() {
+				var audioTest = document.createElement('audio');
+
+
+
+				game = new Game();
+				game.init({
+					'canvasId' : 'game-canvas',
+					'fpsId' : 'fps-counter',
+					'sound' : (audioTest && audioTest.canPlayType && audioTest.canPlayType("audio/mpeg") !== '')
+				});
+
+				/*var tools = document.getElementById('tools');
+				if (game.checkFullScreen() === true) {
+					var buttonFullScreen = document.createElement('button');
+					buttonFullScreen.innerHTML = 'FullScreen';
+					buttonFullScreen.addEventListener('click', function() {
+						game.goFullScreen();
+					});
+					tools.appendChild(buttonFullScreen);
+				}
+
+				var buttonMute = document.createElement('button');
+				buttonMute.innerHTML = game.sound.muted ? 'Unmute' : 'Mute';
+				buttonMute.addEventListener('click', function() {
+					if (game.sound.muted) {
+						game.sound.unmute();
+					}
+					else {
+						game.sound.mute();
+					}
+					buttonMute.innerHTML = game.sound.muted ? 'Unmute' : 'Mute';
+				});
+				tools.appendChild(buttonMute);*/
+			});
+
+		</script>
+		<style type="text/css">
+			body, html { margin:0; padding:0; background:black; }
+			canvas {
+				display:block;
+				/* position:absolute; */
+				top:0;
+				left:0;
+                padding-left: 0;
+                padding-right: 0;
+                margin-left: auto;
+                margin-right: auto;
+                width: 800px;
+                cursor: url('../images/cursor.cur'),     /* Modern browsers    */
+                    url('images/cursor.cur'),        /* Internet Explorer  */
+                    auto;                                       /* Older browsers     */
+
+				height:100%;
+
+				cursor:crosshair;
+
+				/* avoid canvas orange|blue highlight when clicked in Android */
+				-webkit-tap-highlight-color: rgba(0,0,0,0);
+
+				/* improve canvas crispiness when zoomed */
+				image-rendering: -moz-crisp-edges;
+				image-rendering: -o-crisp-edges;
+				image-rendering: -webkit-optimize-contrast;
+				-ms-interpolation-mode: nearest-neighbor;
+			}
+			#tools {
+				position:absolute;
+				top:0;
+				right:0;
+				text-align:right;
+			}
+			#fps-counter {
+				font-family:sans-serif;
+				font-size:10px;
+				color:white;
+				background:black;
+			}
+            #cursor {
+
+            cursor: url('../images/cursor.cur'),     /* Modern browsers    */
+                    url('images/cursor.cur'),        /* Internet Explorer  */
+                    move;                                       /* Older browsers     */
+            }
+
+		</style>
+		<script type = "text/javascript">
+var images = [
+  'images/cursor.cur',
+
+];
+
+var x = 0;
+
+function displayNextImage() {
+  x = (x === images.length - 1) ? 0 : x + 1;
+  document.body.style.cursor = 'url("' + images[x] + '"), default';
+}
+
+setInterval(displayNextImage, 250);
+</script>
+	</head>
+	<body>
+	<div id="cursor">
+		<canvas id="game-canvas" ></canvas>
+		<div id="tools">
+			<span id="fps-counter"></span>
+			<input type="image" src="Home_Button.png" alt="Submit Me" width="50" height="50" onclick="newDoc()">
+			<input type="image" src="Fullscreen_Button.png" alt="Submit Me" width="50" height="50" onclick="fullscreenDoc()">
+			<input id="imgplus" type="image" src="Mute_Button.png" alt="Submit Me" width="50" height="50" onclick="soundDoc()">
+		</div>
+		</div>
+		<script>
+		function newDoc() {
+		  window.location.assign("file:///D:/Libraries/Documents/Workshop%20Files/Final%20Year%20Project/Project%20Stuffs/Tembak%20VKVK/index.html")
+		}
+
+		function fullscreenDoc() {
+			var tools = document.getElementById('tools');
+					game.goFullScreen();
+		}
+
+		function soundDoc() {
+				if (game.sound.muted) {
+					game.sound.unmute();
+					document.getElementById('imgplus').src  = 'Unmute_Button.png';
+
+				}
+				else {
+					game.sound.mute();
+					document.getElementById('imgplus').src  = 'Mute_Button.png';
+
+				}
+		}
+
+
+		</script>
+	</body>
+</html>
