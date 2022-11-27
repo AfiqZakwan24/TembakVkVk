@@ -74,12 +74,12 @@
                 padding-right: 0;
                 margin-left: auto;
                 margin-right: auto;
-                width: 800px;
+                /* width: 800px; */
                 cursor: url('../images/cursor.cur'),     /* Modern browsers    */
                     url('images/cursor.cur'),        /* Internet Explorer  */
                     auto;                                       /* Older browsers     */
 
-				height:100%;
+				height:100vh;
 
 				cursor:crosshair;
 
@@ -137,31 +137,31 @@ setInterval(displayNextImage, 250);
 			<input type="image" src="Fullscreen_Button.png" alt="Submit Me" width="50" height="50" onclick="fullscreenDoc()">
 			<input id="imgplus" type="image" src="Mute_Button.png" alt="Submit Me" width="50" height="50" onclick="soundDoc()">
 		</div>
-		</div>
-		<script>
-		function newDoc() {
-		  window.location.assign("file:///D:/Libraries/Documents/Workshop%20Files/Final%20Year%20Project/Project%20Stuffs/Tembak%20VKVK/index.html")
-		}
+	</div>
+	<script>
+	function newDoc() {
+		window.location.assign("file:///D:/Libraries/Documents/Workshop%20Files/Final%20Year%20Project/Project%20Stuffs/Tembak%20VKVK/index.html")
+	}
 
-		function fullscreenDoc() {
-			var tools = document.getElementById('tools');
-					game.goFullScreen();
-		}
+	function fullscreenDoc() {
+		var tools = document.getElementById('tools');
+				game.goFullScreen();
+	}
 
-		function soundDoc() {
-				if (game.sound.muted) {
-					game.sound.unmute();
-					document.getElementById('imgplus').src  = 'Unmute_Button.png';
+	function soundDoc() {
+			if (game.sound.muted) {
+				game.sound.unmute();
+				document.getElementById('imgplus').src  = 'Unmute_Button.png';
 
-				}
-				else {
-					game.sound.mute();
-					document.getElementById('imgplus').src  = 'Mute_Button.png';
+			}
+			else {
+				game.sound.mute();
+				document.getElementById('imgplus').src  = 'Mute_Button.png';
 
-				}
-		}
+			}
+	}
 
 
-		</script>
+	</script>
 	</body>
 </html>
