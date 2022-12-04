@@ -11,11 +11,11 @@ BipMap.prototype.load = function(src, callback) {
 	// Image loader
 	this.image.onload = function() {
 		// Load error handling
-		// if(!this.complete) {
-		// 	console.error('BipMap.load error');
-		// 	_this = undefined;
-		// 	return false;
-		// }
+		if(!this.complete) {
+			console.error('BipMap.load error');
+			_this = undefined;
+			return false;
+		}
 		
 		// Fire internal event
 		_this.fireEvent('load');
